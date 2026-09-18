@@ -8,7 +8,12 @@
     --master spark://${SPARK_MASTER_HOST_NAME}:${SPARK_MASTER_PORT} \
     /spark-scripts/challenge1-rdd-revenue-by-country.py
   ```
-- [ ] Challenge 2 — Spark DataFrame
+- [x] Challenge 2 — Spark DataFrame: `spark-scripts/challenge2-dataframe-top-products.py` — top 10 produk (StockCode) berdasarkan total revenue, murni pakai DataFrame/SQL API. Produk teratas: DOTCOM POSTAGE (~206rb), REGENCY CAKESTAND 3 TIER (~165rb), PARTY BUNTING (~98rb).
+  ```sh
+  docker exec ${SPARK_WORKER_CONTAINER_NAME}-1 spark-submit \
+    --master spark://${SPARK_MASTER_HOST_NAME}:${SPARK_MASTER_PORT} \
+    /spark-scripts/challenge2-dataframe-top-products.py
+  ```
 - [ ] Challenge 3 — Spark Data Cleaning ke Postgres
 - [ ] Challenge 4 — Spark on Airflow
 - [ ] Challenge 5 — Spark Structured Streaming
