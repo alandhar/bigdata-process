@@ -21,5 +21,8 @@
     --master spark://${SPARK_MASTER_HOST_NAME}:${SPARK_MASTER_PORT} \
     /spark-scripts/challenge3-postgres-cleaning.py
   ```
-- [ ] Challenge 4 — Spark on Airflow
+- [x] Challenge 4 — Spark on Airflow: `dags/challenge4-spark-dataframe-dag.py` — DAG (`schedule_interval=None`) yang submit `challenge2-dataframe-top-products.py` lewat `SparkSubmitOperator` dengan `conn_id=spark_tgs` (koneksi ini otomatis didaftarkan `scripts/entrypoint.sh` saat webserver start).
+  ```sh
+  make airflow   # buka http://localhost:${AIRFLOW_WEBSERVER_PORT}, login admin/admin, trigger DAG challenge4_spark_dataframe_dag
+  ```
 - [ ] Challenge 5 — Spark Structured Streaming
