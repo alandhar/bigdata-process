@@ -14,6 +14,12 @@
     --master spark://${SPARK_MASTER_HOST_NAME}:${SPARK_MASTER_PORT} \
     /spark-scripts/challenge2-dataframe-top-products.py
   ```
-- [ ] Challenge 3 — Spark Data Cleaning ke Postgres
+- [x] Challenge 3 — Spark Data Cleaning ke Postgres: `sql/schema.sql` (schema `retail` + tabel `online_retail_raw`) dan `spark-scripts/challenge3-postgres-cleaning.py` — ingest CSV ke `retail.online_retail_raw` via Spark JDBC, lalu bersihkan (hanya United Kingdom, tahun >= 2011) ke tabel baru `retail.online_retail_clean`. Diverifikasi lokal: 541.909 baris raw, 455.353 baris clean (cocok dengan hitungan manual).
+  ```sh
+  docker exec ${POSTGRES_CONTAINER_NAME} psql -U ${POSTGRES_USER} -d ${POSTGRES_DB} -f /sql/schema.sql
+  docker exec ${SPARK_WORKER_CONTAINER_NAME}-1 spark-submit \
+    --master spark://${SPARK_MASTER_HOST_NAME}:${SPARK_MASTER_PORT} \
+    /spark-scripts/challenge3-postgres-cleaning.py
+  ```
 - [ ] Challenge 4 — Spark on Airflow
 - [ ] Challenge 5 — Spark Structured Streaming
